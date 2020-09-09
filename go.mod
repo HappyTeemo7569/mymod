@@ -1,4 +1,4 @@
-module gitee.com/HappyTeemo/mod
+module github.com/HappyTeemo7569/mymod
 
 go 1.12
 
