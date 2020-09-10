@@ -16,3 +16,10 @@ Api = 3
 
 [Log]
 Path = "./log"
+
+[Server]
+HttpPort = 80
+WsPort = 81
+WsName = "test"
+WsOutTime = 12
+WSHeartTime = 10

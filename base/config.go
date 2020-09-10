@@ -9,11 +9,13 @@ func InitConfig() {
 }
 
 var configBase tagConfigBase
+var ConfigServer TagServerConfig
 
 type tagConfigBase struct {
-	MySql tagMysqlConfig
-	Redis tagRedisConfig
-	Log   tagLogConfig
+	MySql  tagMysqlConfig
+	Redis  tagRedisConfig
+	Log    tagLogConfig
+	Server TagServerConfig
 }
 
 type tagMysqlConfig struct {
@@ -36,6 +38,14 @@ type tagLogConfig struct {
 	Path string
 }
 
+type TagServerConfig struct {
+	HttpPort    int
+	WsPort      int
+	WsName      string
+	WsOutTime   int
+	WSHeartTime int
+}
+
 //初始化基础配置
 func initBaseConfig() {
 	err := gcfg.ReadFileInto(&configBase, "config/configBase.ini")
@@ -44,4 +54,5 @@ func initBaseConfig() {
 		return
 	}
 
+	ConfigServer = configBase.Server
 }

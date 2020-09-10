@@ -8,6 +8,7 @@ require (
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lionsoul2014/ip2region v2.2.0-release+incompatible
 	github.com/phachon/go-logger v0.0.0-20191215032019-86e4227f71ea
+	golang.org/x/net v0.0.0-20200904194848-62affa334b73
 	gopkg.in/gcfg.v1 v1.2.3
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 )
