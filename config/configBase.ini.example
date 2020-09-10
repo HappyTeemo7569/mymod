@@ -1,0 +1,18 @@
+package config
+
+[MySql]
+Auth = admin
+Pwd = 123456
+Addr = 127.0.0.1
+Port = 3306
+Db = test
+
+[Redis]
+Addr = admin
+Pwd = 123456
+Port = 6379
+Rpc = 4
+Api = 3
+
+[Log]
+Path = "./log"

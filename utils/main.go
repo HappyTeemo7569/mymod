@@ -34,6 +34,7 @@ func RandIntReal(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
+//MD5加密
 func Md5Encode(str string) string {
 	h := md5.New()
 	h.Write([]byte(str))
@@ -76,6 +77,7 @@ func GetIP2Region(ip string, dbPath string) ip2region.IpInfo {
 	return ip2rgn
 }
 
+//判断空串 返回默认值
 func GetStringDefault(str string, defs string) string {
 	if str == "" {
 		return defs
