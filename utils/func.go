@@ -79,14 +79,6 @@ type ParameterItem struct {
 	Value string
 }
 
-func BoolToInt(mybool bool) int {
-	if mybool {
-		return 1
-	} else {
-		return 0
-	}
-}
-
 func Lock(userId, second int, name string) bool {
 	rcRpc := base.GetRedisRpc()
 	defer rcRpc.Close()
