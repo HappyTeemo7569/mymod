@@ -1,6 +1,7 @@
 package myWebscoket
 
 import (
+	"errors"
 	"github.com/HappyTeemo7569/mymod/base"
 	"golang.org/x/net/websocket"
 	"time"
@@ -48,4 +49,42 @@ func CheckSocketList() {
 		}
 		return false
 	})
+}
+
+//设置用户数据
+func SetSocketItem(ws *websocket.Conn, userData interface{}) (bool, error) {
+	skt := GetSocketItem(ws)
+	if skt == nil {
+		return false, errors.New("未找到该连接")
+	}
+	if skt.UserData != nil {
+		return false, errors.New("该连接已有数据")
+	}
+	skt.UserData = userData
+	return true, nil
+}
+
+//更新用户数据
+func UpdateSocketItem(ws *websocket.Conn, userData interface{}) (bool, error) {
+	skt := GetSocketItem(ws)
+	if skt == nil {
+		return false, errors.New("未找到该连接")
+	}
+	if skt.UserData == nil {
+		return false, errors.New("该连接还未设置数据")
+	}
+	skt.UserData = userData
+	return true, nil
+}
+
+//获取用户数据
+func GetUserData(ws *websocket.Conn, userData interface{}) (interface{}, error) {
+	skt := GetSocketItem(ws)
+	if skt == nil {
+		return nil, errors.New("未找到该连接")
+	}
+	if skt.UserData == nil {
+		return nil, errors.New("该连接还未设置数据")
+	}
+	return skt.UserData, nil
 }
