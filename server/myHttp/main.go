@@ -2,13 +2,15 @@ package myHttp
 
 import (
 	"fmt"
+	"github.com/HappyTeemo7569/mymod/base"
 	"net/http"
 )
 
 func RunHttp() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/hello", helloHandler)
-	err := http.ListenAndServe(":9999", nil)
+	addr := fmt.Sprintf(":%d", base.ConfigServer.HttpPort)
+	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		panic("服务启动失败:HTTP监听失败:" + err.Error())
 	}
