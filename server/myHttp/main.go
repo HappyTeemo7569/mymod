@@ -7,23 +7,22 @@ import (
 )
 
 func RunHttp() {
-	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/hello", helloHandler)
+	r := New()
+
+	r.GET("/", func(w http.ResponseWriter, req *http.Request) {
+		fmt.Fprintf(w, "URL.Path = %q\n", req.URL.Path)
+	})
+
+	r.GET("/hello", func(w http.ResponseWriter, req *http.Request) {
+		for k, v := range req.Header {
+			fmt.Fprintf(w, "Header[%q] = %q\n", k, v)
+		}
+	})
+
 	addr := fmt.Sprintf(":%d", base.ConfigServer.HttpPort)
-	err := http.ListenAndServe(addr, nil)
+	err := r.Run(addr)
 	if err != nil {
 		panic("服务启动失败:HTTP监听失败:" + err.Error())
 	}
-}
 
-// handler echoes r.URL.Path
-func indexHandler(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(w, "URL.Path = %q\n", req.URL.Path)
-}
-
-// handler echoes r.URL.Header
-func helloHandler(w http.ResponseWriter, req *http.Request) {
-	for k, v := range req.Header {
-		fmt.Fprintf(w, "Header[%q] = %q\n", k, v)
-	}
 }
