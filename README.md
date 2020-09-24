@@ -4,6 +4,8 @@
 
 ## 配置
 config/configBase.ini
+
+参考  config/configBase.ini.example
 ```
 [MySql] 
 Auth = admin  

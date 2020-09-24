@@ -1,5 +1,3 @@
-package config
-
 [MySql]
 Auth = admin
 Pwd = 123456

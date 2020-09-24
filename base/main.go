@@ -12,6 +12,7 @@ func init() {
 	Logger.Infof("配置初始化--redis初始化成功")
 
 	InitMysqlNormal()
+	InitMysqlNormalGOrm()
 	Logger.Infof("配置初始化--mysql初始化成功")
 
 }

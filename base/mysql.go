@@ -6,8 +6,11 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-//数据库连接
 var Db *sqlx.DB
+
+func getDb() *sqlx.DB {
+	return Db
+}
 
 func InitMysqlNormal() {
 	connstr := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8",
